@@ -38,9 +38,8 @@ public class ProductsController : ControllerBase
             await _repo.UpdateAsync(product);
             return Ok(product);
         }
-        catch (System.Exception)
+        catch (KeyNotFoundException)
         {
-
             return NotFound();
         }
     }
@@ -53,7 +52,7 @@ public class ProductsController : ControllerBase
             await _repo.DeleteAsync(id);
             return NoContent();
         }
-        catch (System.Exception)
+        catch (KeyNotFoundException)
         {
             return NotFound();
         }

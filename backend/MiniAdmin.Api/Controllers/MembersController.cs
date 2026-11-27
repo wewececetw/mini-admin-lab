@@ -25,13 +25,11 @@ public class MembersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Member>> GetById(int id)
     {
-        // 當_repo.GetByIdAsync(id)有值 回傳 _repo.GetByIdAsync(id)
-        //else  return NotFound();
         try
         {
             return await _repo.GetByIdAsync(id);
         }
-        catch (Exception)
+        catch (KeyNotFoundException)
         {
             return NotFound();
         }
@@ -53,9 +51,8 @@ public class MembersController : ControllerBase
             await _repo.UpdateAsync(member);
             return Ok(member);
         }
-        catch (System.Exception)
+        catch (KeyNotFoundException)
         {
-
             return NotFound();
         }
     }
@@ -69,9 +66,8 @@ public class MembersController : ControllerBase
             await _repo.DeleteAsync(id);
             return NoContent();
         }
-        catch (System.Exception)
+        catch (KeyNotFoundException)
         {
-
             return NotFound();
         }
     }
