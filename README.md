@@ -1,28 +1,32 @@
-# MiniAdmin
+# MiniAdmin Lab
 
-小型後台練習專案：JWT 登入後管理**會員**與**商品**。
+小型後台管理系統（自學作品）：會員與商品管理、JWT 登入與角色權限。
 
-後端 ASP.NET Core + SQLite（會員）／記憶體（商品）；前端 Angular standalone。
+## 功能
 
-## 做了什麼
+- JWT 登入／登出，Angular 路由守衛保護頁面
+- 角色權限：未登入回 401，非 Admin 刪除會員回 403
+- 商品：列表、新增、修改、刪除（前後端全線）
+- 會員：列表、搜尋、新增（EF Core + SQLite；前端尚未做修改／刪除）
 
-- JWT 登入、登出、路由守衛
-- **商品**：列表／新增／更新／刪除（前後端）
-- **會員**：後端 CRUD；前端目前列表、搜尋、新增（尚未做修改／刪除）
-- 單元測試（後端 xUnit、前端 Vitest）
+## 技術
 
-刻意沒有：GitHub Actions／CI、細角色權限 UI、兩邊 CRUD 做滿。
+C#、ASP.NET Core（.NET 10）、EF Core／SQLite、xUnit、Angular、Docker
 
-## 怎麼啟動
+## 怎麼跑
 
-要兩個終端，先後端再前端。
+開兩個終端（或後端改用 Docker）。
 
 ```bash
 # 後端 → http://localhost:5212
 cd backend/MiniAdmin.Api
 dotnet run --launch-profile http
 
-# 前端 → http://localhost:4200（proxy 轉 /api）
+# 或用 Docker 跑 API（同樣對應本機 5212）
+cd backend
+docker compose up --build
+
+# 前端 → http://localhost:4200（proxy 把 /api 轉到 5212）
 cd frontend
 npm install
 npm start -- --proxy-config proxy.conf.json
@@ -37,24 +41,15 @@ cd frontend && npm test -- --watch=false
 
 ## 示範帳號
 
-僅本機示範用，**不是正式帳密**：
-
-| 帳號 | 密碼 | 備註 |
+| 帳號 | 密碼 | 角色 |
 |------|------|------|
-| `admin` | `secret` | Admin（可打會員刪除 API） |
+| `admin` | `secret` | Admin |
 | `user` | `secret` | 一般使用者 |
 
-畫面也可直接按「模擬登入」（等同 admin）。
+※ 帳號寫死在程式中，僅供示範，非正式驗證機制。畫面「模擬登入」等同 `admin`。
 
-## 結構
+## 開發方式
 
-```
-backend/
-  MiniAdmin.Core/        商業邏輯
-  MiniAdmin.Core.Tests/
-  MiniAdmin.Api/         Web API
-  MiniAdmin.Api.Tests/
-frontend/                Angular
-```
+每個功能先寫測試再實作（TDD）：後端 xUnit，前端 Angular／Vitest。
 
-> 路徑不要放在含 `#` 的資料夾，否則 `ng serve` 可能白畫面。
+學習交接筆記見 [`docs/handoff.md`](docs/handoff.md)（非作品說明本體）。
