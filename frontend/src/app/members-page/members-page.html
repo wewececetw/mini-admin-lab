@@ -1,0 +1,6 @@
+<section data-testid="members-page">
+  <h2>會員</h2>
+  <input type="text" [(ngModel)]="search" data-testid="member-search" />
+  <app-members-list [members]="filteredMembers()" />
+  <p data-testid="member-count">{{ memberCount() }}</p>
+</section>

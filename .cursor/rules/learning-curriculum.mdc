@@ -1,0 +1,8 @@
+---
+description: C# 學習契約：W3Schools 順序併章，練習接 mini-admin
+alwaysApply: true
+---
+
+語言照 [W3Schools C#](https://www.w3schools.com/cs/cs_syllabus.php) 官方順序，相鄰頁可併章；**Part 1（～第 9 章）**前不教集合／泛型／LINQ／async；**第 10 章起**依 README。
+**Part 4** 對齊 Vue Essentials→Angular；上課用短題面（見 `csharp-teacher`），不要長 Spec 牆。
+練習蓋 mini-admin（`README.md`）；TDD 先紅燈。細節以 canonical `csharp-teacher`；手機貼碼見 `phone-lesson`。

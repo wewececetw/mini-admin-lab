@@ -1,0 +1,9 @@
+---
+description: C#／.csproj 擴充：禁止 DotRush；Red Hat XML 可留
+globs: "**/*.{csproj,sln,slnx,xml}"
+alwaysApply: false
+---
+
+禁止安裝／建議／寫入設定指向 **DotRush**（`nromanov.dotrush`）；會弄髒 `.csproj` 白球。
+C# 語言服務用官方 **C#**（`ms-dotnettools.csharp`）。
+**不要**把 Red Hat XML（`redhat.vscode-xml`）當禁項；禁的是 DotRush，不是 Red Hat。

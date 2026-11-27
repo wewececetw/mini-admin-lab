@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csharp",
+    "redhat.vscode-xml"
+  ],
+  "unwantedRecommendations": [
+    "nromanov.dotrush",
+    "ms-dotnettools.csdevkit"
+  ]
+}

@@ -1,0 +1,5 @@
+<ul data-testid="member-list">
+  @for (m of members(); track m.id) {
+  <li [class.active]="m.active">{{ m.name }}</li>
+  }
+</ul>

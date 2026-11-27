@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/MiniAdmin.Api.Tests/MiniAdmin.Api.Tests.csproj" />
+    <Project Path="backend/MiniAdmin.Api/MiniAdmin.Api.csproj" />
+    <Project Path="backend/MiniAdmin.Core.Tests/MiniAdmin.Core.Tests.csproj" />
+    <Project Path="backend/MiniAdmin.Core/MiniAdmin.Core.csproj" />
+  </Folder>
+  <Folder Name="/learn/">
+    <Project Path="learn/CSharpBasics.Tests/CSharpBasics.Tests.csproj" />
+    <Project Path="learn/CSharpBasics/CSharpBasics.csproj" />
+    <Project Path="learn/Playground/Playground.csproj" />
+  </Folder>
+</Solution>
