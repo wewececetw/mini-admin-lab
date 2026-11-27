@@ -1,6 +1,14 @@
 @MiniAdmin.Api_HostAddress = http://localhost:5212
 
-GET {{MiniAdmin.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### 登入（admin 或 user，密碼都是 secret）
+POST {{MiniAdmin.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
 
-###
+{
+  "username": "admin",
+  "password": "secret"
+}
+
+### 會員列表（貼上登入拿到的 token）
+GET {{MiniAdmin.Api_HostAddress}}/api/members
+Authorization: Bearer <token>
