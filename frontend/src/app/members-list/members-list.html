@@ -1,5 +1,7 @@
-<ul data-testid="member-list">
+<ul class="data-list" data-testid="member-list">
   @for (m of members(); track m.id) {
   <li [class.active]="m.active">{{ m.name }}</li>
+  } @empty {
+  <li class="empty">沒有符合的會員。</li>
   }
 </ul>

@@ -17,4 +17,10 @@ export class MembersApi {
       headers: { Authorization: `Bearer ${token}` },
     });
   }
+
+  create(token: string, member: ApiMember): Observable<ApiMember> {
+    return this.http.post<ApiMember>('/api/members', member, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
 }

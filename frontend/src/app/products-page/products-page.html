@@ -1,0 +1,78 @@
+<section class="admin-shell" data-testid="products-page">
+  <header class="topbar">
+    <div class="brand">MiniAdmin</div>
+    <nav>
+      <a routerLink="/members" data-testid="nav-members">會員</a>
+      <a routerLink="/products" class="is-active">商品</a>
+    </nav>
+    <button type="button" class="btn btn-ghost" (click)="logout()" data-testid="logout-btn">
+      登出
+    </button>
+  </header>
+
+  <div class="page-head">
+    <h2>商品</h2>
+    <p class="meta">列表點一列可帶入上方表單再更新</p>
+  </div>
+
+  <div class="panel">
+    <h3>新增／更新</h3>
+    <div class="form-grid">
+      <div class="field">
+        <label for="product-id">編號</label>
+        <input id="product-id" type="number" [(ngModel)]="id" data-testid="product-id" />
+      </div>
+      <div class="field">
+        <label for="product-name">名稱</label>
+        <input id="product-name" type="text" [(ngModel)]="name" data-testid="product-name" />
+      </div>
+      <div class="field">
+        <label for="product-price">價格</label>
+        <input id="product-price" type="number" [(ngModel)]="price" data-testid="product-price" />
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" (click)="add()" data-testid="product-add-btn">
+        新增
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="save()"
+        data-testid="product-update-btn"
+      >
+        更新
+      </button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>商品列表</h3>
+    <ul class="data-list" data-testid="product-list">
+      @for (p of products(); track p.id) {
+      <li>
+        <button
+          type="button"
+          class="row-main"
+          style="border: 0; padding: 0; background: transparent; cursor: pointer; text-align: left; color: inherit"
+          (click)="fill(p)"
+        >
+          {{ p.name }} {{ p.price }}
+          <span class="hint">#{{ p.id }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="remove(p.id)"
+          data-testid="product-delete-btn"
+        >
+          刪除
+        </button>
+      </li>
+      } @empty {
+      <li class="empty">尚無商品，先新增一筆看看。</li>
+      }
+    </ul>
+  </div>
+</section>

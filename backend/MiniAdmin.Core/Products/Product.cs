@@ -2,11 +2,13 @@ namespace MiniAdmin.Core.Products;
 
 public class Product
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
 
-    public Product(string name, decimal price)
+    public Product(int id, string name, decimal price)
     {
+        Id = id;
         Name = name;
         Price = price;
     }

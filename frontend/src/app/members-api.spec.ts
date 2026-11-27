@@ -37,4 +37,18 @@ describe('MembersApi', () => {
       { id: 2, name: 'Bob', email: 'bob@example.com' },
     ]);
   });
+
+  it('should POST /api/members with Bearer token and return created member', async () => {
+    const body = { id: 3, name: 'Cara', email: 'cara@example.com' };
+    const pending = firstValueFrom(api.create('fake-jwt', body));
+
+    const req = httpTesting.expectOne('/api/members');
+    expect(req.request.method).toBe('POST');
+    expect(req.request.headers.get('Authorization')).toBe('Bearer fake-jwt');
+    expect(req.request.body).toEqual(body);
+
+    req.flush(body);
+
+    await expect(pending).resolves.toEqual(body);
+  });
 });

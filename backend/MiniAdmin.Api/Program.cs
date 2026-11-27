@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MiniAdmin.Api.Auth;
 using MiniAdmin.Core.Members;
+using MiniAdmin.Core.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<MiniAdminDbContext>(options =>
     options.UseSqlite("Data Source=miniadmin.db"));
 builder.Services.AddScoped<IMemberRepository, EfMemberRepository>();
+builder.Services.AddSingleton<IProductRepository, MemoryProductRepository>();
 builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

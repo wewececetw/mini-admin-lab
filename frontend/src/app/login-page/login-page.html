@@ -1,4 +1,10 @@
-<section data-testid="login-page">
-  <h2>登入</h2>
-  <button (click)="login()" data-testid="login-btn">模擬登入</button>
+<section class="login-shell" data-testid="login-page">
+  <div class="login-card">
+    <p class="brand">MiniAdmin</p>
+    <p class="lede">小型後台：會員與商品管理。按下方按鈕用示範帳號進入。</p>
+    <h2>登入</h2>
+    <button type="button" class="btn btn-primary" (click)="login()" data-testid="login-btn">
+      模擬登入
+    </button>
+  </div>
 </section>

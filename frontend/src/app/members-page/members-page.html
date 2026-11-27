@@ -1,6 +1,55 @@
-<section data-testid="members-page">
-  <h2>會員</h2>
-  <input type="text" [(ngModel)]="search" data-testid="member-search" />
-  <app-members-list [members]="filteredMembers()" />
-  <p data-testid="member-count">{{ memberCount() }}</p>
+<section class="admin-shell" data-testid="members-page">
+  <header class="topbar">
+    <div class="brand">MiniAdmin</div>
+    <nav>
+      <a routerLink="/members" class="is-active">會員</a>
+      <a routerLink="/products" data-testid="nav-products">商品</a>
+    </nav>
+    <button type="button" class="btn btn-ghost" (click)="logout()" data-testid="logout-btn">
+      登出
+    </button>
+  </header>
+
+  <div class="page-head">
+    <h2>會員</h2>
+    <p class="meta">共 <span data-testid="member-count">{{ memberCount() }}</span> 人</p>
+  </div>
+
+  <div class="panel">
+    <h3>新增會員</h3>
+    <div class="form-grid">
+      <div class="field">
+        <label for="member-id">編號</label>
+        <input id="member-id" type="number" [(ngModel)]="id" data-testid="member-id" />
+      </div>
+      <div class="field">
+        <label for="member-name">姓名</label>
+        <input id="member-name" type="text" [(ngModel)]="name" data-testid="member-name" />
+      </div>
+      <div class="field">
+        <label for="member-email">Email</label>
+        <input id="member-email" type="text" [(ngModel)]="email" data-testid="member-email" />
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" (click)="add()" data-testid="member-add-btn">
+        新增
+      </button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>名單</h3>
+    <div class="field" style="margin-bottom: 0.85rem">
+      <label for="member-search">搜尋姓名</label>
+      <input
+        id="member-search"
+        type="text"
+        [(ngModel)]="search"
+        data-testid="member-search"
+        placeholder="輸入關鍵字"
+      />
+    </div>
+    <app-members-list [members]="filteredMembers()" />
+  </div>
 </section>
